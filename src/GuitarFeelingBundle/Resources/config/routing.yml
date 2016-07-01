@@ -1,0 +1,3 @@
+guitar_feeling_homepage:
+    path:     /
+    defaults: { _controller: GuitarFeelingBundle:Default:index }
