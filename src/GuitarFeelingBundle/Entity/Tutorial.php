@@ -49,6 +49,17 @@ class Tutorial
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="GuitarFeelingBundle\Entity\TutorialCategory")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GuitarFeelingBundle\Entity\TutorialLevel")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $level;
 
     /**
      * Get id
@@ -155,5 +166,52 @@ class Tutorial
     {
         return $this->updatedAt;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \GuitarFeelingBundle\Entity\TutorialCategory $category
+     *
+     * @return Tutorial
+     */
+    public function setCategory(\GuitarFeelingBundle\Entity\TutorialCategory $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \GuitarFeelingBundle\Entity\TutorialCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set level
+     *
+     * @param \GuitarFeelingBundle\Entity\TutorialLevel $level
+     *
+     * @return Tutorial
+     */
+    public function setLevel(\GuitarFeelingBundle\Entity\TutorialLevel $level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return \GuitarFeelingBundle\Entity\TutorialLevel
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+}
