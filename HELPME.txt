@@ -1,0 +1,2 @@
+Load fixtures to populate database with DoctrineFixturesBundle >>> php app/console doctrine:fixtures:load --append
+
