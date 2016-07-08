@@ -10,10 +10,22 @@ class PopulateTutorialCategory implements FixtureInterface
 {
    public function load(ObjectManager $manager)
    {
-      $category = new TutorialCategory();
-      $category->setName('Finger Picking');
+      $categoryFP = new TutorialCategory();
+      $categoryFP->setName('Finger Picking');
+      $manager->persist($categoryFP);
       
-      $manager->persist($category);
+      $categoryTP = new TutorialCategory();
+      $categoryTP->setName('Tapping');
+      $manager->persist($categoryTP);
+
+      $categorySL = new TutorialCategory();
+      $categorySL->setName('Solo');
+      $manager->persist($categorySL);
+
+      $categoryHY = new TutorialCategory();
+      $categoryHY->setName('Harmony');
+      $manager->persist($categoryHY);
+      
       $manager->flush();
    }
 }
