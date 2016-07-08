@@ -28,6 +28,12 @@ class TutorialLevel
      */
     private $name;
 
+    /**
+     * @var smallint
+     *
+     * @ORM\Column(name="step", type="smallint")
+     */
+    private $step;
 
     /**
      * Get id
@@ -62,5 +68,28 @@ class TutorialLevel
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set step
+     *
+     * @param integer $step
+     *
+     * @return TutorialLevel
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
+
+        return $this;
+    }
+
+    /**
+     * Get step
+     *
+     * @return integer
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+}
