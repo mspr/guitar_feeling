@@ -1,3 +1,7 @@
 guitar_feeling_homepage:
     path:     /
     defaults: { _controller: GuitarFeelingBundle:Homepage:index }
+
+guitar_feeling_tutorials:
+    path:     /tutorials/
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:index }
