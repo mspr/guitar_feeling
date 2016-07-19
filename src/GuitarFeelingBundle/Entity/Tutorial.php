@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="tutorial")
  * @ORM\Entity(repositoryClass="GuitarFeelingBundle\Repository\TutorialRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Tutorial
 {
@@ -61,6 +62,10 @@ class Tutorial
      */
     private $level;
 
+    public function __construct()
+    {
+    }
+    
     /**
      * Get id
      *
@@ -134,6 +139,15 @@ class Tutorial
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function initBeforePersist()
+    {
+       $this->setCreatedAt(new \DateTime());
+       $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
      * Get createdAt
      *
      * @return \DateTime
@@ -155,6 +169,14 @@ class Tutorial
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDate()
+    {
+       $this->setUpdatedAt(new \DateTime());
     }
 
     /**
