@@ -11,7 +11,10 @@ class TutorialController extends Controller
 {
       public function indexAction()
       {
-         return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig');
+         $em = $this->getDoctrine()->getEntityManager();
+         $tutorials = $em->getRepository('GuitarFeelingBundle:Tutorial')->findAll();
+         
+         return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials));
       }
 
       public function newAction(Request $request)
