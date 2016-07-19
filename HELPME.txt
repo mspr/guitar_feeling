@@ -2,3 +2,4 @@ Load fixtures to populate database with DoctrineFixturesBundle >>> php bin/conso
 Display queries to update the database considering entities    >>> php bin/console doctrine:schema:update --dump-sql
 Update the database considering entities                       >>> php bin/console doctrine:schema:update --force
 Generate or update entity considering doctrine mapping         >>> php bin/console doctrine:generate:entities Bundle:EntityName
+Generate form                                                  >>> php bin/console doctrine:generate:form Bundle:Entity
