@@ -94,4 +94,3 @@ class TutorialCategory
         return $this->description;
     }
 }
-
