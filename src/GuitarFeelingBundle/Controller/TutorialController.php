@@ -17,13 +17,22 @@ class TutorialController extends Controller
       return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials));
    }
 
-   public function newAction(Request $request)
+   public function newAction()
    {
       $tutorial = new Tutorial();
       
-      $form = $this->createForm(TutorialType::class, $tutorial);
+      $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       
+      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('form' => $form->createView()));
+   }
+
+   public function createAction(Request $request)
+   {
+      $tutorial = new Tutorial();
+      
+      $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       $form->handleRequest($request);
+      
       if ($form->isValid())
       {
          $em = $this->getDoctrine()->getManager();
@@ -37,7 +46,7 @@ class TutorialController extends Controller
       
       return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('form' => $form->createView()));
    }
-
+   
    public function showAction($id)
    {
       $em = $this->getDoctrine()->getEntityManager();

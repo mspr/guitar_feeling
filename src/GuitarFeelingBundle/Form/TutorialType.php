@@ -23,6 +23,9 @@ class TutorialType extends AbstractType
          'choice_label' => 'name'
       ));
       $builder->add('create', SubmitType::class);
+      
+      $builder->setAction($options['action']);
+      $builder->setMethod('POST');
    }
 
    public function getName()

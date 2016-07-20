@@ -16,3 +16,8 @@ guitar_feeling_tutorials_show:
 guitar_feeling_tutorials_new:
     path:     /tutorials/new
     defaults: { _controller: GuitarFeelingBundle:Tutorial:new }
+
+guitar_feeling_tutorials_create:
+    path:     /tutorials/create
+    methods: [POST]
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:create }
