@@ -22,12 +22,16 @@ class TutorialType extends AbstractType
          'class' => 'GuitarFeelingBundle:TutorialLevel',
          'choice_label' => 'name'
       ));
-      $builder->add('create', SubmitType::class);
+      $builder->add('submit', SubmitType::class);
       
       $builder->setAction($options['action']);
-      $builder->setMethod('POST');
    }
 
+   public function setDefaultOptions(OptionsResolverInterface $resolver)
+   {
+      $resolver->setDefaults(array('data_class' => 'GuitarFeelingBundle\Entity\Tutorial'));
+   }
+  
    public function getName()
    {
       return 'tutorial';

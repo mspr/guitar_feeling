@@ -5,6 +5,7 @@ guitar_feeling_homepage:
 guitar_feeling_tutorials:
     path:     /tutorials/
     defaults: { _controller: GuitarFeelingBundle:Tutorial:index }
+    methods: [GET]
 
 guitar_feeling_tutorials_show:
     path:     /tutorials/{id}
@@ -16,8 +17,19 @@ guitar_feeling_tutorials_show:
 guitar_feeling_tutorials_new:
     path:     /tutorials/new
     defaults: { _controller: GuitarFeelingBundle:Tutorial:new }
+    methods: [GET]
 
 guitar_feeling_tutorials_create:
     path:     /tutorials/create
-    methods: [POST]
     defaults: { _controller: GuitarFeelingBundle:Tutorial:create }
+    methods: [POST]
+
+guitar_feeling_tutorials_edit:
+    path:     /tutorials/{id}/edit
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:edit }
+    methods: [GET]
+
+guitar_feeling_tutorials_update:
+    path:     /tutorials/{id}
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:update }
+    methods: [POST]

@@ -23,7 +23,7 @@ class TutorialController extends Controller
       
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       
-      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('form' => $form->createView()));
+      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
 
    public function createAction(Request $request)
@@ -44,7 +44,7 @@ class TutorialController extends Controller
          return $this->redirect($this->generateUrl('guitar_feeling_tutorials_show', array('id' => $tutorial->getId())));
       }
       
-      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('form' => $form->createView()));
+      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
    
    public function showAction($id)
@@ -53,7 +53,40 @@ class TutorialController extends Controller
       $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
       if (!$tutorial)
          $this->createNotFoundException('Unable to find Tutorial entity.');
-      
+            
       return $this->render('GuitarFeelingBundle:Tutorial:show.html.twig', array('tutorial' => $tutorial));
+   }
+   
+   public function editAction($id)
+   {
+      $em = $this->getDoctrine()->getEntityManager();
+      $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
+      if (!$tutorial)
+         $this->createNotFoundException('Unable to find Tutorial entity.');
+
+      $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_update', array('id' => $id))));
+
+      return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
+   }
+   
+   public function updateAction($id, Request $request)
+   {
+      $em = $this->getDoctrine()->getEntityManager();
+      $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
+      if (!$tutorial)
+         $this->createNotFoundException('Unable to find Tutorial entity.');
+      
+      $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_update', array('id' => $id))));
+      $form->handleRequest($request);
+      
+      if ($form->isValid())
+      {
+         $em->persist($tutorial);
+         $em->flush();
+         
+         return $this->redirect($this->generateUrl('guitar_feeling_tutorials_show', array('id' => $id)));
+      }
+      
+      return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
 }
