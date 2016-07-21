@@ -13,14 +13,8 @@
             <h1>Guitar Feeling</h1>
          </div>
 
-         <div class="row">
-            <div id="content" class="col-md-9">
-               {{ form(form) }}
-            </div>
-         </div>
-
-         <a href="{{ path('guitar_feeling_tutorials') }}">Back</a>
-
+         {{ include('GuitarFeelingBundle:Tutorial:form.html.twig') }}
+         
          <hr>
 
          <footer>
