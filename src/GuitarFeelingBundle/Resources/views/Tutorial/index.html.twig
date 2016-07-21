@@ -1,49 +1,28 @@
-<!DOCTYPE html>
+{% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
-<html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-   </head>
+{% block body %}
+   
+   <table class="table">
+      <thead>
+         <tr>
+            <th>Title</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for tutorial in tutorials %}
+            <tr>
+               <td>{{ tutorial.title }}</td>
+               <td>{{ tutorial.description }}</td>
+               <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
+               <td>
+                  {{ form(delete_forms[tutorial.id]) }}
+               </td>
+           </tr>
+         {% endfor %}
+    </tbody>
+   </table>
 
-   <body>
-      <div class="container">
-         <div id="header" class="jumbotron">
-            <h1>Tutorials</h1>
-         </div>
+   <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
 
-         <table class="table">
-            <thead>
-               <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-               </tr>
-            </thead>
-            <tbody>
-               {% for tutorial in tutorials %}
-                  <tr>
-                     <td>{{ tutorial.title }}</td>
-                     <td>{{ tutorial.description }}</td>
-                     <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
-                     <td>
-                        {{ form(delete_forms[tutorial.id]) }}
-                     </td>
-                 </tr>
-               {% endfor %}
-          </tbody>
-         </table>
-
-         <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
-
-         <hr>
-
-         <footer>
-            <p>Footer.</p>
-         </footer>
-      </div>
-
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-   </body>
-</html>
+{% endblock %}
