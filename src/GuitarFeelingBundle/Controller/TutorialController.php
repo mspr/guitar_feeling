@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use GuitarFeelingBundle\Entity\Tutorial;
 use GuitarFeelingBundle\Form\TutorialType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TutorialController extends Controller
 {
@@ -14,7 +15,12 @@ class TutorialController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       $tutorials = $em->getRepository('GuitarFeelingBundle:Tutorial')->findAll();
       
-      return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials));
+      foreach ($tutorials as $tutorial)
+      {
+         $delete_forms[$tutorial->getId()] = $this->createDeleteForm($tutorial->getId())->createView();
+      }
+            
+      return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials, 'delete_forms' => $delete_forms));
    }
 
    public function newAction()
@@ -88,5 +94,35 @@ class TutorialController extends Controller
       }
       
       return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
+   }
+   
+   public function deleteAction($id, Request $request)
+   {
+      $form = $this->createDeleteForm($id);
+      $form->handleRequest($request);
+      
+      if ($form->isValid())
+      {
+         $em = $this->getDoctrine()->getEntityManager();
+         $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
+         if (!$tutorial)
+            $this->createNotFoundException('Unable to find Tutorial entity.');
+
+         $em->remove($tutorial);
+         $em->flush();
+
+         $request->getSession()->getFlashBag()->add('info', 'Tutorial deleted.');
+         
+         return $this->redirect($this->generateUrl('guitar_feeling_tutorials'));
+      }
+   }
+   
+   private function createDeleteForm($id)
+   {
+      return $this->createFormBuilder()
+         ->setAction($this->generateUrl('guitar_feeling_tutorials_delete', array('id' => $id)))
+         ->setMethod('DELETE')
+         ->add('Delete', SubmitType::class)
+         ->getForm();
    }
 }

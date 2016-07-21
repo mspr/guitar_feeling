@@ -25,7 +25,11 @@
                   <tr>
                      <td>{{ tutorial.title }}</td>
                      <td>{{ tutorial.description }}</td>
-                  </tr>
+                     <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
+                     <td>
+                        {{ form(delete_forms[tutorial.id]) }}
+                     </td>
+                 </tr>
                {% endfor %}
           </tbody>
          </table>

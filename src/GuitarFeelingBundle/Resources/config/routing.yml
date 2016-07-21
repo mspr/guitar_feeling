@@ -33,3 +33,8 @@ guitar_feeling_tutorials_update:
     path:     /tutorials/{id}
     defaults: { _controller: GuitarFeelingBundle:Tutorial:update }
     methods: [POST]
+
+guitar_feeling_tutorials_delete:
+    path:     /tutorials/{id}/delete
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:delete }
+    methods: [DELETE]
