@@ -4,7 +4,8 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+      {% block stylesheets %}{% endblock %}
    </head>
 
    <body>
@@ -13,8 +14,7 @@
             <h1>Guitar Feeling</h1>
          </div>
 
-         {% block body %}
-         {% endblock %}
+         {% block body %}{% endblock %}
          
          <hr>
 
@@ -23,7 +23,7 @@
          </footer>
       </div>
 
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{{ asset('assets/vendor/angular/angular.js') }}"></script>
+      {% block javascripts %}{% endblock %}
    </body>
 </html>
