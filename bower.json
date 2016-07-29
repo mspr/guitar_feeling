@@ -1,0 +1,23 @@
+{
+  "name": "guitar_feeling",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Maxime Spriet"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.8"
+  }
+}
