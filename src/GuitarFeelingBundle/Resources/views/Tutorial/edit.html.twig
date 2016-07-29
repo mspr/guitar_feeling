@@ -1,7 +1,9 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
-   
    {{ include('GuitarFeelingBundle:Tutorial:form.html.twig') }}
+{% endblock %}
 
+{% block javascripts %}
+   <script type="text/javascript" src="{{ asset('assets/js/Tutorial/form.js') }}"></script>
 {% endblock %}
