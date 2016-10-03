@@ -7,6 +7,7 @@ use GuitarFeelingBundle\Entity\Tutorial;
 use GuitarFeelingBundle\Form\TutorialType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TutorialController extends Controller
 {
@@ -27,9 +28,12 @@ class TutorialController extends Controller
    {
       $tutorial = new Tutorial();
       
+      $em = $this->getDoctrine()->getEntityManager();
+      $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
+
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       
-      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
+      return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
    }
 
    public function createAction(Request $request)
@@ -38,7 +42,7 @@ class TutorialController extends Controller
       
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       $form->handleRequest($request);
-      
+  
       if ($form->isValid())
       {
          $em = $this->getDoctrine()->getManager();
@@ -49,7 +53,7 @@ class TutorialController extends Controller
       
          return $this->redirect($this->generateUrl('guitar_feeling_tutorials_show', array('id' => $tutorial->getId())));
       }
-      
+
       return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
    
@@ -70,9 +74,11 @@ class TutorialController extends Controller
       if (!$tutorial)
          $this->createNotFoundException('Unable to find Tutorial entity.');
 
+      $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
+
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_update', array('id' => $id))));
 
-      return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
+      return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
    }
    
    public function updateAction($id, Request $request)
