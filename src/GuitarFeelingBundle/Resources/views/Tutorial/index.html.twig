@@ -1,7 +1,6 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
-   
    <table class="table">
       <thead>
          <tr>
@@ -14,15 +13,17 @@
             <tr>
                <td>{{ tutorial.title }}</td>
                <td>{{ tutorial.description }}</td>
+               <td>{{ include('GuitarFeelingBundle:Tutorial:star_rating.html.twig') }}</td>
                <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
-               <td>
-                  {{ form(delete_forms[tutorial.id]) }}
-               </td>
+               <td>{{ form(delete_forms[tutorial.id]) }}</td>
            </tr>
          {% endfor %}
     </tbody>
    </table>
 
    <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
+{% endblock %}
 
+{% block javascripts %}
+   <script type="text/javascript" src="{{ asset('assets/js/Tutorial/index.js') }}"></script>
 {% endblock %}

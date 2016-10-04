@@ -15,13 +15,15 @@ class TutorialController extends Controller
    {
       $em = $this->getDoctrine()->getEntityManager();
       $tutorials = $em->getRepository('GuitarFeelingBundle:Tutorial')->findAll();
+
+      $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
       
       foreach ($tutorials as $tutorial)
       {
          $delete_forms[$tutorial->getId()] = $this->createDeleteForm($tutorial->getId())->createView();
       }
             
-      return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials, 'delete_forms' => $delete_forms));
+      return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials, 'levels' => $levels, 'delete_forms' => $delete_forms));
    }
 
    public function newAction()
