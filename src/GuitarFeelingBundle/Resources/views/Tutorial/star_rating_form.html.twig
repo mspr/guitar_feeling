@@ -1,0 +1,16 @@
+<div class="star-rating" value="{% if tutorial.level is null %}1{% else %}{{ tutorial.level.step }}{% endif %}">
+   <div class="star-rating__wrap">
+      {{ form_label(form.level, "Level:") }}
+      {{ form_errors(form.level) }}
+      <input class="star-rating__input" id="star-rating-5" type="radio" name="tutorial[level]" value="5">
+      <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="{{ levels[4].name }}"></label>
+      <input class="star-rating__input" id="star-rating-4" type="radio" name="tutorial[level]" value="4">
+      <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="{{ levels[3].name }}"></label>
+      <input class="star-rating__input" id="star-rating-3" type="radio" name="tutorial[level]" value="3">
+      <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="{{ levels[2].name }}"></label>
+      <input class="star-rating__input" id="star-rating-2" type="radio" name="tutorial[level]" value="2">
+      <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="{{ levels[1].name }}"></label>
+      <input class="star-rating__input" id="star-rating-1" type="radio" name="tutorial[level]" value="1">
+      <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="{{ levels[0].name }}"></label>
+   </div>
+</div>
