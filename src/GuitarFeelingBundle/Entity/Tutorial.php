@@ -37,6 +37,13 @@ class Tutorial
     private $description;
 
     /**
+     * @var text
+     *
+     * @ORM\Column(name="introduction", type="text")
+     */
+    private $introduction;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -235,5 +242,29 @@ class Tutorial
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set introduction
+     *
+     * @param string $introduction
+     *
+     * @return Tutorial
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
     }
 }

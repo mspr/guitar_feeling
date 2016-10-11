@@ -6,6 +6,8 @@
       {{ form_errors(form.title) }}
       {{ form_widget(form.title) }}
       
+      <br/>
+      
       {{ form_label(form.description, "Description:") }}
       {{ form_errors(form.description) }}
       {{ form_widget(form.description) }}
@@ -15,6 +17,15 @@
       {{ form_label(form.category, "Category:") }}
       {{ form_errors(form.category) }}
       {{ form_widget(form.category) }}
+
+      <br/>
+      
+      {{ form_label(form.introduction, "Introduction:") }}
+      {{ form_errors(form.introduction) }}
+      
+      <br/>
+      
+      {{ form_widget(form.introduction) }}
 
       {{ form_widget(form._token) }}
       {{ form_row(form.submit) }}

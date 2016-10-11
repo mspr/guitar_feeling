@@ -22,6 +22,7 @@ class TutorialType extends AbstractType
          'class' => 'GuitarFeelingBundle:TutorialLevel',
          'choice_label' => 'name'
       ));
+      $builder->add('introduction');
       $builder->add('submit', SubmitType::class);
       
       $builder->setAction($options['action']);
