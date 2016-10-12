@@ -16,7 +16,11 @@
                <td>{{ tutorial.description }}</td>
                <td>{{ include('GuitarFeelingBundle:Tutorial:star_rating.html.twig') }}</td>
                <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
-               <td>{{ form(delete_forms[tutorial.id]) }}</td>
+               <td>
+                  {{ form_start(delete_forms[tutorial.id]) }}
+                  {{ form_widget(delete_forms[tutorial.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
+                  {{ form_end(delete_forms[tutorial.id]) }}
+               </td>
            </tr>
          {% endfor %}
     </tbody>
