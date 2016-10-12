@@ -24,11 +24,14 @@
       {{ form_errors(form.introduction) }}
       
       <br/>
-      
-      {{ form_widget(form.introduction) }}
+
+      {{ include('GuitarFeelingBundle::text_editor_toolbar.html.twig') }}
+      <div id="introduction" contenteditable="true"></div>
+      <textarea id="tutorial_introduction" name="tutorial[introduction]" required="required" style="display:none"></textarea>
 
       {{ form_widget(form._token) }}
-      {{ form_row(form.submit) }}
+      
+      <div><button type="submit" id="tutorial_submit" name="tutorial[submit]" onclick="return getContent()">Submit</button></div>
       
       {{ form_end(form, {'render_rest': false}) }}
    </div>
