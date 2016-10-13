@@ -12,10 +12,11 @@
          <br/>
          <b>Level:</b> {{ tutorial.level.name }}
          <br/>
-         <b>Introduction:</b> {{ tutorial.introduction }}
+         <b>Introduction:</b>
+         <div id="introduction" contenteditable="false">{{ tutorial.introduction | raw }}</div>
       </div>
    </div>
-
+   
    <a href="{{ path('guitar_feeling_tutorials') }}">Tutorials</a>
    
 {% endblock %}
