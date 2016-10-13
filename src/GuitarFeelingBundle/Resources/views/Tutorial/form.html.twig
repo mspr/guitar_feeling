@@ -26,7 +26,7 @@
       <br/>
 
       {{ include('GuitarFeelingBundle::text_editor_toolbar.html.twig') }}
-      <div id="introduction" contenteditable="true"></div>
+      <div id="introduction" contenteditable="true">{{ tutorial.introduction | raw }}</div>
       <textarea id="tutorial_introduction" name="tutorial[introduction]" required="required" style="display:none"></textarea>
 
       {{ form_widget(form._token) }}
