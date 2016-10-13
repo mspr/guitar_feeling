@@ -1,0 +1,11 @@
+#introduction
+{
+   border: 1px solid;
+   border-radius: 3px;
+}
+
+[contentEditable=true]:empty:not(:focus):before
+{
+   content:attr(data-placeholder);
+   color:grey;
+}
