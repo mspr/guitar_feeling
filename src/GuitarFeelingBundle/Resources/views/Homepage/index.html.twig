@@ -15,23 +15,14 @@
                Welcome to Guitar Feeling, a website dedicated to guitar.
             </p>
          </div>
+      
+         {{ include('GuitarFeelingBundle::nav_bar.html.twig') }}
 
-      <div class="row">
-         <div id="menu" class="col-md-3">
-            <h3>Tutorials</h3>
-            <ul class="nav nav-pills nav-stacked">
-               <li><a href="{{ path('guitar_feeling_tutorials') }}">Tutorials</a></li>
-            </ul>
-         </div>
-         <div id="content" class="col-md-9">
-         </div>
-       </div>
+         <hr>
 
-       <hr>
-
-       <footer>
-         <p>Footer.</p>
-       </footer>
+         <footer>
+            <p>Footer.</p>
+         </footer>
       </div>
 
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
