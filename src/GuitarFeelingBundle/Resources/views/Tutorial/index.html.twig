@@ -1,32 +1,33 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
-   <table class="table">
-      <thead>
-         <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Level</th>
-         </tr>
-      </thead>
-      <tbody>
-         {% for tutorial in tutorials %}
-            <tr>
-               <td>{{ tutorial.title }}</td>
-               <td>{{ tutorial.description }}</td>
-               <td>{{ include('GuitarFeelingBundle:Tutorial:star_rating.html.twig') }}</td>
-               <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
-               <td>
-                  {{ form_start(delete_forms[tutorial.id]) }}
-                  {{ form_widget(delete_forms[tutorial.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
-                  {{ form_end(delete_forms[tutorial.id]) }}
-               </td>
-           </tr>
-         {% endfor %}
-    </tbody>
-   </table>
-
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
    <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
+{% endif %}
+<table class="table">
+   <thead>
+      <tr>
+         <th>Title</th>
+         <th>Description</th>
+         <th>Level</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for tutorial in tutorials %}
+         <tr>
+            <td>{{ tutorial.title }}</td>
+            <td>{{ tutorial.description }}</td>
+            <td>{{ include('GuitarFeelingBundle:Tutorial:star_rating.html.twig') }}</td>
+            <td><a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a></td>
+            <td>
+               {{ form_start(delete_forms[tutorial.id]) }}
+               {{ form_widget(delete_forms[tutorial.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
+               {{ form_end(delete_forms[tutorial.id]) }}
+            </td>
+         </tr>
+      {% endfor %}
+   </tbody>
+</table>
 {% endblock %}
 
 {% block javascripts %}

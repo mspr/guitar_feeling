@@ -1,31 +1,4 @@
-<!DOCTYPE html>
+{% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
-<html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-   </head>
-
-   <body>
-      <div class="container">
-         <div id="header" class="jumbotron">
-            <h1>Guitar Feeling</h1>
-            <p>
-               Welcome to Guitar Feeling, a website dedicated to guitar.
-            </p>
-         </div>
-      
-         {{ include('GuitarFeelingBundle::nav_bar.html.twig') }}
-
-         <hr>
-
-         <footer>
-            <p>Footer.</p>
-         </footer>
-      </div>
-
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-   </body>
-</html>
+{% block body %}
+{% endblock %}
