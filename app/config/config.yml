@@ -72,3 +72,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+services:
+   GuitarFeelingBundle.security.logout_success_handler:
+      class: GuitarFeelingBundle\EventListener\LogoutHandler
+   GuitarFeelingBundle.security.login_success_handler:
+      class: GuitarFeelingBundle\EventListener\LoginHandler
