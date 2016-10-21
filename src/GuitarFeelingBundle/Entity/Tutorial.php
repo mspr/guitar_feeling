@@ -3,6 +3,7 @@
 namespace GuitarFeelingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tutorial
@@ -29,6 +30,12 @@ class Tutorial
      */
     private $title;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(maxSize="500k")
+     */
+    public $picture;
+        
     /**
      * @var string
      *
@@ -106,7 +113,7 @@ class Tutorial
     {
         return $this->title;
     }
-
+    
     /**
      * Set description
      *
@@ -266,5 +273,29 @@ class Tutorial
     public function getIntroduction()
     {
         return $this->introduction;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Tutorial
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

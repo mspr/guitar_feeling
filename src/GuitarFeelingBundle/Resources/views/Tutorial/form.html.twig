@@ -8,6 +8,14 @@
       
       <br/>
       
+      {{ form_label(form.picture, "Picture:") }}
+      {{ form_errors(form.picture) }}
+      {{ form_widget(form.picture) }}
+      
+      <img id="pictureViewer" src="{{ asset('uploads/Tutorial/pictures/' ~ tutorial.picture) }}" />
+      
+      <br/>
+      
       {{ form_label(form.description, "Description:") }}
       {{ form_errors(form.description) }}
       {{ form_widget(form.description) }}

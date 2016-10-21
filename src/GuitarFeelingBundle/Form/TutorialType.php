@@ -7,12 +7,14 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class TutorialType extends AbstractType
 {
    public function buildForm(FormBuilderInterface $builder, array $options)
    {
       $builder->add('title');
+      $builder->add('picture', FileType::class, array('data_class' => null));
       $builder->add('description');
       $builder->add('category', EntityType::class, array(
          'class' => 'GuitarFeelingBundle:TutorialCategory',

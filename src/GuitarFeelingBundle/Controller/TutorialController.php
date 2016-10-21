@@ -48,6 +48,12 @@ class TutorialController extends Controller
       if ($form->isValid())
       {
          $em = $this->getDoctrine()->getManager();
+         
+         $picture = $tutorial->getPicture();
+         $fileName = md5(uniqid()).'.'.$picture->guessExtension();
+         $picture->move($this->getParameter('tutorials_pictures_directory'), $fileName);
+         $tutorial->setPicture($fileName);
+         
          $em->persist($tutorial);
          $em->flush();
          
@@ -65,7 +71,7 @@ class TutorialController extends Controller
       $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
       if (!$tutorial)
          $this->createNotFoundException('Unable to find Tutorial entity.');
-            
+      
       return $this->render('GuitarFeelingBundle:Tutorial:show.html.twig', array('tutorial' => $tutorial));
    }
    
@@ -75,7 +81,7 @@ class TutorialController extends Controller
       $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
       if (!$tutorial)
          $this->createNotFoundException('Unable to find Tutorial entity.');
-
+            
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
 
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_update', array('id' => $id))));
