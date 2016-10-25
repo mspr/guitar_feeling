@@ -1,16 +1,7 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
-   {% for i in range(low=0, high=tutorials|length, step=3) %}
-      <div class="container-fluid">
-         {% for j in range(low=i, high=i+2, step=1) %}
-            {% if tutorials[j] is defined %}
-               {% set tutorial = tutorials[j] %}
-               {{ include('GuitarFeelingBundle:Tutorial:overview.html.twig') }}
-            {% endif %}
-         {% endfor %}
-      </div>  
-   {% endfor %}
+   {{ include('GuitarFeelingBundle:Tutorial:overview.html.twig') }}
 
    <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
 {% endblock %}

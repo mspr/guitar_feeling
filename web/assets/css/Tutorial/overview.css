@@ -4,3 +4,7 @@ div .box
    border-radius: 2.0em;
    height:15.0em;
 }
+div .box:hover
+{
+   cursor: pointer;
+}
