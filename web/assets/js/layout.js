@@ -1,3 +1,3 @@
 $( "#header" ).click(function() {
-   window.location.href = $('#header').attr("data-path");
+   window.location.href = $(this).attr("data-path");
 });
