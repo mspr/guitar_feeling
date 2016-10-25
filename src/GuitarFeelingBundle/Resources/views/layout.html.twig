@@ -9,13 +9,14 @@
       <link rel="stylesheet" href="{{ asset('assets/css/star_rating.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/text_editor_toolbar.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/Tutorial/form.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/layout.css') }}">
       {% block stylesheets %}{% endblock %}
       <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
    </head>
 
    <body>
       <div class="container">
-         <div id="header" class="jumbotron">
+         <div id="header" class="jumbotron" data-path="{{ path('guitar_feeling_homepage') }}">
             <h1>Guitar Feeling</h1>
          </div>
 
@@ -28,6 +29,7 @@
          </footer>
       </div>
 
+      <script type="text/javascript" src="{{ asset('assets/js/layout.js') }}"></script>
       {% block javascripts %}{% endblock %}
    </body>
 </html>
