@@ -23,9 +23,7 @@ function readURL(input)
       reader.onload = function (e)
       {
          $('#pictureViewer')
-            .attr('src', e.target.result)
-            .width(200)
-            .height(100);
+            .attr('src', e.target.result);
       }
       
       reader.readAsDataURL(input.files[0]);
