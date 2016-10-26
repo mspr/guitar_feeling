@@ -11,3 +11,7 @@ $(document).ready(function() {
    $('.star-rating__ico').attr("disabled", true);
    $('.star-rating__input').attr("disabled", true);
 });
+
+$("div[class~='item']").click(function() {
+   window.location.href = $(this).attr("data-path");
+});
