@@ -15,14 +15,13 @@ class TutorialController extends Controller
    {
       $em = $this->getDoctrine()->getEntityManager();
       $tutorials = $em->getRepository('GuitarFeelingBundle:Tutorial')->findAll();
-
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
       
       foreach ($tutorials as $tutorial)
       {
          $delete_forms[$tutorial->getId()] = $this->createDeleteForm($tutorial->getId())->createView();
       }
-            
+      
       return $this->render('GuitarFeelingBundle:Tutorial:index.html.twig', array('tutorials' => $tutorials, 'levels' => $levels, 'delete_forms' => $delete_forms));
    }
 
@@ -32,7 +31,7 @@ class TutorialController extends Controller
       
       $em = $this->getDoctrine()->getEntityManager();
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
-
+      
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       
       return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
@@ -44,7 +43,7 @@ class TutorialController extends Controller
       
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_create')));
       $form->handleRequest($request);
-  
+      
       if ($form->isValid())
       {
          $em = $this->getDoctrine()->getManager();
@@ -58,10 +57,10 @@ class TutorialController extends Controller
          $em->flush();
          
          $request->getSession()->getFlashBag()->add('notice', 'Tutorial created.');
-      
+         
          return $this->redirect($this->generateUrl('guitar_feeling_tutorials_show', array('id' => $tutorial->getId())));
       }
-
+      
       return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
    
@@ -81,11 +80,11 @@ class TutorialController extends Controller
       $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
       if (!$tutorial)
          $this->createNotFoundException('Unable to find Tutorial entity.');
-            
+      
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
-
+      
       $form = $this->createForm(TutorialType::class, $tutorial, array('action' => $this->generateUrl('guitar_feeling_tutorials_update', array('id' => $id))));
-
+      
       return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
    }
    
@@ -121,10 +120,10 @@ class TutorialController extends Controller
          $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
          if (!$tutorial)
             $this->createNotFoundException('Unable to find Tutorial entity.');
-
+         
          $em->remove($tutorial);
          $em->flush();
-
+         
          $request->getSession()->getFlashBag()->add('info', 'Tutorial deleted.');
          
          return $this->redirect($this->generateUrl('guitar_feeling_tutorials'));
