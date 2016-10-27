@@ -24,6 +24,7 @@ security:
                provider: fos_userbundle
                csrf_token_generator: security.csrf.token_manager
                success_handler: GuitarFeelingBundle.security.login_success_handler
+               login_path: /
                
             logout:
                success_handler: GuitarFeelingBundle.security.logout_success_handler
@@ -34,4 +35,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/tutorials/new, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/tutorials/[0-9]+/edit, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/admin/, role: ROLE_ADMIN }
