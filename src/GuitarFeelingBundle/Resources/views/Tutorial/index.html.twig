@@ -1,9 +1,11 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
+   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
+   {% endif %}
+   
    {{ include('GuitarFeelingBundle:Tutorial:overview.html.twig') }}
-
-   <a href="{{ path('guitar_feeling_tutorials_new') }}">Create a tutorial</a>
 {% endblock %}
 
 {% block javascripts %}

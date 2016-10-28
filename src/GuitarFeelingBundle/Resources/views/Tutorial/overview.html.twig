@@ -18,14 +18,16 @@
                   {% endif %}
                      <div class="col-lg-offset-1 col-lg-5">{{ tutorial.description }}</div>
                </div>
-               <div class="row">
-                  <div class="col-lg-offset-8 col-lg-4">
-                     <a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a>
-                     {{ form_start(delete_forms[tutorial.id]) }}
-                     {{ form_widget(delete_forms[tutorial.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
-                     {{ form_end(delete_forms[tutorial.id]) }}
-                 </div>
-               </div>
+               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <div class="row">
+                     <div class="col-lg-offset-8 col-lg-4">
+                        <a href="{{ path('guitar_feeling_tutorials_edit', {'id': tutorial.id}) }}">Edit</a>
+                        {{ form_start(delete_forms[tutorial.id]) }}
+                        {{ form_widget(delete_forms[tutorial.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
+                        {{ form_end(delete_forms[tutorial.id]) }}
+                    </div>
+                  </div>
+               {% endif %}
             </div>
          {% endif %}
       {% endfor %}

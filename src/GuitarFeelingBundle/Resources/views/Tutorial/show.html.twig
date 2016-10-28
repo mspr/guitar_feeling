@@ -1,7 +1,6 @@
 {% extends 'GuitarFeelingBundle::layout.html.twig' %}
 
 {% block body %}
-
    <div class="row">
       <div id="content" class="col-md-9">
          <b>Title:</b> {{ tutorial.title }}
@@ -20,7 +19,4 @@
          <div id="introduction" contenteditable="false">{{ tutorial.introduction | raw }}</div>
       </div>
    </div>
-   
-   <a href="{{ path('guitar_feeling_tutorials') }}">Tutorials</a>
-   
 {% endblock %}
