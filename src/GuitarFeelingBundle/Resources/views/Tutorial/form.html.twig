@@ -30,13 +30,8 @@
       
       {{ form_label(form.introduction, "Introduction:") }}
       {{ form_errors(form.introduction) }}
+      {{ form_widget(form.introduction) }}
       
-      <br/>
-
-      {{ include('GuitarFeelingBundle::text_editor_toolbar.html.twig') }}
-      <div id="introduction" contenteditable="true" data-placeholder="Type your introduction...">{{ tutorial.introduction | raw }}</div>
-      <textarea id="tutorial_introduction" name="tutorial[introduction]" required="required" style="display:none"></textarea>
-
       <br/>
       
       {{ form_widget(form._token) }}

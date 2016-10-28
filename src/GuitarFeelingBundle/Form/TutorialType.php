@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class TutorialType extends AbstractType
 {
@@ -24,7 +25,7 @@ class TutorialType extends AbstractType
          'class' => 'GuitarFeelingBundle:TutorialLevel',
          'choice_label' => 'name'
       ));
-      $builder->add('introduction');
+      $builder->add('introduction', CKEditorType::class);
       $builder->add('submit', SubmitType::class);
       
       $builder->setAction($options['action']);
