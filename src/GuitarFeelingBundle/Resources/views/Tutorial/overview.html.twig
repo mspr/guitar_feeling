@@ -27,6 +27,13 @@
                         {{ form_end(delete_forms[tutorial.id]) }}
                     </div>
                   </div>
+                  <div class="row">
+                     <div class="col-lg-offset-10 col-lg-2">
+                        <form method="post" action="{{ path('guitar_feeling_tutorials_publish', {'id': tutorial.id}) }}">
+                           <button type="submit" class="glyphicon glyphicon-file" style={% if tutorial.published %}"color:green"{% else %}"color:grey"{% endif %} />
+                        </form>
+                     </div>
+                  </div>
                {% endif %}
             </div>
          {% endif %}

@@ -29,10 +29,17 @@ guitar_feeling_tutorials_edit:
     defaults: { _controller: GuitarFeelingBundle:Tutorial:edit }
     methods: [GET]
 
+guitar_feeling_tutorials_publish:
+    path:     /tutorials/{id}/publish
+    defaults: { _controller: GuitarFeelingBundle:Tutorial:publish }
+    methods: [POST]
+
 guitar_feeling_tutorials_update:
     path:     /tutorials/{id}
     defaults: { _controller: GuitarFeelingBundle:Tutorial:update }
     methods: [POST]
+    requirements:
+      id: \d+
 
 guitar_feeling_tutorials_delete:
     path:     /tutorials/{id}/delete

@@ -109,6 +109,21 @@ class TutorialController extends Controller
       return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'form' => $form->createView()));
    }
    
+   public function publishAction($id, Request $request)
+   {
+      $em = $this->getDoctrine()->getEntityManager();
+      $tutorial = $em->getRepository('GuitarFeelingBundle:Tutorial')->find($id);
+      if (!$tutorial)
+         $this->createNotFoundException('Unable to find Tutorial entity.');
+      
+      $tutorial->setPublished(!$tutorial->getPublished());
+      
+      $em->persist($tutorial);
+      $em->flush();
+      
+      return $this->indexAction();
+   }
+   
    public function deleteAction($id, Request $request)
    {
       $form = $this->createDeleteForm($id);

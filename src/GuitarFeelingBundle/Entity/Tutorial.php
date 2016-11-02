@@ -65,6 +65,13 @@ class Tutorial
     private $updatedAt;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", options={"default": false})
+     */
+    private $published;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="GuitarFeelingBundle\Entity\TutorialCategory")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -297,5 +304,29 @@ class Tutorial
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Tutorial
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

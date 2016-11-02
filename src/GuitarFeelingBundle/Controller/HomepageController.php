@@ -15,13 +15,14 @@ class HomepageController extends Controller
       
       return $this->render('GuitarFeelingBundle:Homepage:index.html.twig', array('mostRecentTutorials' => $mostRecentTutorials, 'levels' => $levels));
    }
-    
+   
    private function getMostRecentTutorials($tutorialCount)
    {
       $em = $this->getDoctrine()->getEntityManager();
       $repository = $em->getRepository('GuitarFeelingBundle:Tutorial');
       
       $query = $repository->createQueryBuilder('t')
+         ->where('t.published = TRUE')
          ->orderBy('t.createdAt', 'DESC')
          ->setMaxResults($tutorialCount)
          ->getQuery();
