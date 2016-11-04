@@ -3,6 +3,7 @@
 namespace GuitarFeelingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Concert
@@ -29,6 +30,12 @@ class Concert
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(maxSize="500k")
+     */
+    public $picture;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -49,7 +56,19 @@ class Concert
      */
     private $description;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", options={"default": false})
+     */
+    private $published;
 
+
+    public function __construct()
+    {
+       $this->published = false;
+    }
+    
     /**
      * Get id
      *
@@ -155,5 +174,52 @@ class Concert
     {
         return $this->description;
     }
-}
+    
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Tutorial
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
 
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Tutorial
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+}
