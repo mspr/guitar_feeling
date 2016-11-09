@@ -3,3 +3,4 @@ Display queries to update the database considering entities    >>> php bin/conso
 Update the database considering entities                       >>> php bin/console doctrine:schema:update --force
 Generate or update entity considering doctrine mapping         >>> php bin/console doctrine:generate:entities Bundle:EntityName
 Generate form                                                  >>> php bin/console doctrine:generate:form Bundle:Entity
+Initialize assets                                              >>> php bin/console assets:install web
