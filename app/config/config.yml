@@ -9,7 +9,8 @@ imports:
 parameters:
     locale: en
     tutorials_pictures_directory: '%kernel.root_dir%/../web/uploads/Tutorial/pictures'
-    
+    concerts_pictures_directory: '%kernel.root_dir%/../web/uploads/Concert/pictures'
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -80,7 +81,7 @@ ivory_ck_editor:
         default:
           toolbar: [ [ "Source", "-", "Save" ], "/", ['Bold', 'Italic', 'Underline', 'Strike'], "/", [ "Maximize" ] ]
           uiColor: "#000000"
-            
+          
 services:
    GuitarFeelingBundle.security.logout_success_handler:
       class: GuitarFeelingBundle\EventListener\LogoutHandler

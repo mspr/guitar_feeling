@@ -39,6 +39,7 @@ class Concert
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\Date()
      */
     private $date;
 

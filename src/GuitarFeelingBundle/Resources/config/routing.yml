@@ -45,3 +45,47 @@ guitar_feeling_tutorials_delete:
     path:     /tutorials/{id}/delete
     defaults: { _controller: GuitarFeelingBundle:Tutorial:delete }
     methods: [DELETE]
+
+guitar_feeling_concerts:
+    path:     /concerts/
+    defaults: { _controller: GuitarFeelingBundle:Concert:index }
+    methods: [GET]
+
+guitar_feeling_concerts_show:
+    path:     /concerts/{id}
+    defaults: { _controller: GuitarFeelingBundle:Concert:show }
+    methods: [GET]
+    requirements:
+      id: \d+
+
+guitar_feeling_concerts_new:
+    path:     /concerts/new
+    defaults: { _controller: GuitarFeelingBundle:Concert:new }
+    methods: [GET]
+
+guitar_feeling_concerts_create:
+    path:     /concerts/create
+    defaults: { _controller: GuitarFeelingBundle:Concert:create }
+    methods: [POST]
+
+guitar_feeling_concerts_edit:
+    path:     /concerts/{id}/edit
+    defaults: { _controller: GuitarFeelingBundle:Concert:edit }
+    methods: [GET]
+
+guitar_feeling_concerts_publish:
+    path:     /concerts/{id}/publish
+    defaults: { _controller: GuitarFeelingBundle:Concert:publish }
+    methods: [POST]
+
+guitar_feeling_concerts_update:
+    path:     /concerts/{id}
+    defaults: { _controller: GuitarFeelingBundle:Concert:update }
+    methods: [POST]
+    requirements:
+      id: \d+
+
+guitar_feeling_concerts_delete:
+    path:     /concerts/{id}/delete
+    defaults: { _controller: GuitarFeelingBundle:Concert:delete }
+    methods: [DELETE]

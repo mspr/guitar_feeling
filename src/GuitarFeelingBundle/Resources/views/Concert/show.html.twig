@@ -1,0 +1,19 @@
+{% extends 'GuitarFeelingBundle::layout.html.twig' %}
+
+{% block body %}
+   <div class="row">
+      <div id="content" class="col-md-9">
+         <b>Title:</b> {{ concert.title }}
+         <br/>
+         {% if concert.picture %}
+            <img src="{{ asset('uploads/Concert/pictures/' ~ concert.picture) }}" width="40%" height="40%" />
+         {% endif %}
+         <br/>
+         <b>Description:</b> {{ concert.description }}
+         <br/>
+         <b>Date:</b> <input type="text" id="concert_date" value="{{ concert.date | date('d/m/Y H:i') }}" readonly="true" />
+         <br/>
+         <b>Venue:</b> {{ concert.venue }}
+      </div>
+   </div>
+{% endblock %}

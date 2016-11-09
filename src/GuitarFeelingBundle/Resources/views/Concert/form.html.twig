@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="/css/ui-lightness/jquery-ui-1.8.5.custom.css" />
+<link rel="stylesheet" href="{{ asset('assets/css/jquery.datetimepicker.css') }}">
+
+<div class="row">
+   <div id="content" class="col-md-9">
+      {{ form_start(form, {'attr': {'id': 'registerForm'}}) }}
+      
+      {{ form_label(form.title, "Title:") }}
+      {{ form_errors(form.title) }}
+      {{ form_widget(form.title) }}
+      
+      <br/>
+      
+      {{ form_label(form.picture, "Picture:") }}
+      {{ form_errors(form.picture) }}
+      {{ form_widget(form.picture) }}
+      
+      <img id="pictureViewer" src="{{ asset('uploads/Concert/pictures/' ~ concert.picture) }}" width="40%" height="40%" />
+      
+      <br/>
+      
+      {{ form_label(form.description, "Description:") }}
+      {{ form_errors(form.description) }}
+      {{ form_widget(form.description) }}
+      
+      <br/>
+      
+      {{ form_label(form.date, "Date:") }}
+      {{ form_errors(form.date) }}
+      {{ form_widget(form.date, {attr: {'id': 'datetimepicker', 'value': concert.date | date('d/m/Y H:i') }}) }}
+      
+      <br/>
+      
+      {{ form_label(form.venue, "Venue:") }}
+      {{ form_errors(form.venue) }}
+      {{ form_widget(form.venue) }}
+
+      {{ form_widget(form._token) }}
+      
+      <div><button type="submit" id="concert_submit" name="concert[submit]" onclick="return getContent()">Submit</button></div>
+      
+      {{ form_end(form, {'render_rest': false}) }}
+   </div>
+</div>
+
+<script type="text/javascript" src="{{ asset('assets/js/jquery.datetimepicker.full.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/Concert/form.js') }}"></script>

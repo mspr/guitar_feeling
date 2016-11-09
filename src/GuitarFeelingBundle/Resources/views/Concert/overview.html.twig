@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="{{ asset('assets/css/Concert/overview.css') }}">
+
+{% for i in range(low=0, high=concerts|length, step=1) %}
+   <div class="container-fluid">
+      {% for j in range(low=i, high=i+2, step=1) %}
+         {% if concerts[j] is defined %}
+            {% set concert = concerts[j] %}
+            <div class="col-lg-4 box" data-path="{{ path('guitar_feeling_concerts_show', {'id': concert.id}) }}">
+               <div class="row">
+                  <div class="col-lg-offset-3 col-lg-2">{{ concert.title }}</div>
+               </div>
+               <div class="row">
+                  {% if concert.picture %}
+                     <div class="col-lg-offset-1 col-lg-5">
+                        <img src="{{ asset('uploads/Concert/pictures/' ~ concert.picture) }}" width="100%" height="100%" />
+                     </div>
+                  {% endif %}
+                     <div class="col-lg-offset-1 col-lg-5">{{ concert.description }}</div>
+               </div>
+               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <div class="row">
+                     <div class="col-lg-offset-8 col-lg-4">
+                        <a href="{{ path('guitar_feeling_concerts_edit', {'id': concert.id}) }}">Edit</a>
+                        {{ form_start(delete_forms[concert.id]) }}
+                        {{ form_widget(delete_forms[concert.id].Delete, {'label': ' ', 'attr': {'class': 'glyphicon glyphicon-remove', 'style': 'color:red; background:none; border:none;'}})}}
+                        {{ form_end(delete_forms[concert.id]) }}
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-offset-10 col-lg-2">
+                        <form method="post" action="{{ path('guitar_feeling_concerts_publish', {'id': concert.id}) }}">
+                           <button type="submit" class="glyphicon glyphicon-file" style={% if concert.published %}"color:green"{% else %}"color:grey"{% endif %} />
+                        </form>
+                     </div>
+                  </div>
+               {% endif %}
+            </div>
+         {% endif %}
+      {% endfor %}
+   </div>  
+{% endfor %}
+
+<script type="text/javascript" src="{{ asset('assets/js/Concert/overview.js') }}"></script>
