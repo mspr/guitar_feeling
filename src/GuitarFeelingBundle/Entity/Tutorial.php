@@ -85,6 +85,7 @@ class Tutorial
 
     public function __construct()
     {
+       $this->published = false;
     }
     
     /**
