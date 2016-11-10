@@ -11,9 +11,10 @@ class HomepageController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       
       $mostRecentTutorials = $this->getMostRecentTutorials(3);
+      $closestConcerts = $this->getClosestConcerts(3);
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
       
-      return $this->render('GuitarFeelingBundle:Homepage:index.html.twig', array('mostRecentTutorials' => $mostRecentTutorials, 'levels' => $levels));
+      return $this->render('GuitarFeelingBundle:Homepage:index.html.twig', array('mostRecentTutorials' => $mostRecentTutorials, 'closestConcerts' => $closestConcerts, 'levels' => $levels));
    }
    
    private function getMostRecentTutorials($tutorialCount)
@@ -25,6 +26,20 @@ class HomepageController extends Controller
          ->where('t.published = TRUE')
          ->orderBy('t.createdAt', 'DESC')
          ->setMaxResults($tutorialCount)
+         ->getQuery();
+      
+      return $query->getResult();
+   }
+   
+   private function getClosestConcerts($concertCount)
+   {
+      $em = $this->getDoctrine()->getEntityManager();
+      $repository = $em->getRepository('GuitarFeelingBundle:Concert');
+      
+      $query = $repository->createQueryBuilder('c')
+         ->where('c.published = TRUE')
+         ->orderBy('c.date', 'DESC')
+         ->setMaxResults($concertCount)
          ->getQuery();
       
       return $query->getResult();

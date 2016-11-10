@@ -104,6 +104,21 @@ class ConcertController extends Controller
       return $this->render('GuitarFeelingBundle:Concert:edit.html.twig', array('concert' => $concert, 'form' => $form->createView()));
    }
    
+   public function publishAction($id, Request $request)
+   {
+      $em = $this->getDoctrine()->getEntityManager();
+      $concert = $em->getRepository('GuitarFeelingBundle:Concert')->find($id);
+      if (!$concert)
+         $this->createNotFoundException('Unable to find Concert entity.');
+      
+      $concert->setPublished(!$concert->getPublished());
+      
+      $em->persist($concert);
+      $em->flush();
+      
+      return $this->indexAction();
+   }
+   
    public function deleteAction($id, Request $request)
    {
       $form = $this->createDeleteForm($id);
