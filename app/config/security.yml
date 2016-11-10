@@ -37,4 +37,6 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/tutorials/new, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/tutorials/[0-9]+/edit, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/concerts/new, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/concerts/[0-9]+/edit, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/admin/, role: ROLE_ADMIN }
