@@ -8,10 +8,20 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-5">
-            {{ include('GuitarFeelingBundle:Homepage:tutorial_carousel.html.twig') }}
+            <div class="row">
+               <div class="col-lg-offset-5 col-lg-2"><b>Tutorial</b></div>
+            </div>
+            <div class="row">
+               {{ include('GuitarFeelingBundle:Homepage:tutorial_carousel.html.twig') }}
+            </div>
          </div>
          <div class="col-lg-offset-1 col-lg-5">
-            {{ include('GuitarFeelingBundle:Homepage:concert_carousel.html.twig') }}
+            <div class="row">
+               <div class="col-lg-offset-5 col-lg-2"><b>Concert</b></div>
+            </div>
+            <div class="row">
+               {{ include('GuitarFeelingBundle:Homepage:concert_carousel.html.twig') }}
+            </div>
          </div>
       </div>
    </div>
