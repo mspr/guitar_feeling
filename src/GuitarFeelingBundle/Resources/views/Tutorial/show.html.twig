@@ -5,6 +5,7 @@
       <div id="content" class="col-md-9">
          <b>Title:</b> {{ tutorial.title }}
          <br/>
+         <b>Picture:</b>
          {% if tutorial.picture %}
             <img src="{{ asset('uploads/Tutorial/pictures/' ~ tutorial.picture) }}" width="40%" height="40%" />
          {% endif %}
