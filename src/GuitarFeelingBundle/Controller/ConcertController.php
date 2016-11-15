@@ -90,11 +90,21 @@ class ConcertController extends Controller
       if (!$concert)
          $this->createNotFoundException('Unable to find Concert entity.');
       
+      $fileName = $concert->getPicture();
+      
       $form = $this->createForm(ConcertType::class, $concert, array('action' => $this->generateUrl('guitar_feeling_concerts_update', array('id' => $id))));
       $form->handleRequest($request);
       
       if ($form->isValid())
       {
+         if ($concert->getPicture())
+         {
+            $fileName = md5(uniqid()).'.'.$picture->guessExtension();
+            $picture->move($this->getParameter('concerts_pictures_directory'), $fileName);
+         }
+         
+         $concert->setPicture($fileName);
+         
          $em->persist($concert);
          $em->flush();
          
