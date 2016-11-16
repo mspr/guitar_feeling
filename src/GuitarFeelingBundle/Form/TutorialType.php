@@ -30,12 +30,12 @@ class TutorialType extends AbstractType
       
       $builder->setAction($options['action']);
    }
-
+   
    public function setDefaultOptions(OptionsResolverInterface $resolver)
    {
       $resolver->setDefaults(array('data_class' => 'GuitarFeelingBundle\Entity\Tutorial'));
    }
-  
+   
    public function getName()
    {
       return 'tutorial';
