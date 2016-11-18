@@ -97,7 +97,8 @@ class ConcertController extends Controller
       
       if ($form->isValid())
       {
-         if ($concert->getPicture())
+         $picture = $concert->getPicture();
+         if ($picture)
          {
             $fileName = md5(uniqid()).'.'.$picture->guessExtension();
             $picture->move($this->getParameter('concerts_pictures_directory'), $fileName);
