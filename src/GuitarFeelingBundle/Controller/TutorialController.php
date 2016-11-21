@@ -62,7 +62,7 @@ class TutorialController extends Controller
       }
       
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
-
+      
       return $this->render('GuitarFeelingBundle:Tutorial:new.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
    }
    
@@ -119,7 +119,7 @@ class TutorialController extends Controller
       }
       
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
-
+      
       return $this->render('GuitarFeelingBundle:Tutorial:edit.html.twig', array('tutorial' => $tutorial, 'levels' => $levels, 'form' => $form->createView()));
    }
    
