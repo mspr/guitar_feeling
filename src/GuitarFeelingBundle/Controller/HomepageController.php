@@ -3,6 +3,7 @@
 namespace GuitarFeelingBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomepageController extends Controller
 {
@@ -15,6 +16,38 @@ class HomepageController extends Controller
       $levels = $em->getRepository('GuitarFeelingBundle:TutorialLevel')->findAll();
       
       return $this->render('GuitarFeelingBundle:Homepage:index.html.twig', array('mostRecentTutorials' => $mostRecentTutorials, 'closestConcerts' => $closestConcerts, 'levels' => $levels));
+   }
+   
+   public function contactAction(Request $request)
+   {
+      $name = $request->request->get('contactname');
+      $email = $request->request->get('email');
+      $subject = $request->request->get('subject');
+      $body = $request->request->get('body');
+      
+      if ($request->request->get('submit'))
+      {
+         $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+                      ->setUsername('spriet.maxime.eisti@gmail.com')
+                      ->setPassword('cedfcedm');
+         $mailer = \Swift_Mailer::newInstance($transport);
+         
+         $message = \Swift_Message::newInstance()
+                    ->setSubject($subject)
+                    ->setFrom('spriet.maxime.eisti@gmail.com')
+                    ->setTo('spriet.maxime.eisti@gmail.com')
+                    ->setBody($body);
+         
+         if (!$mailer->send($message, $failures))
+         {
+            echo "Failures:";
+            print_r($failures);
+         }
+         else
+            $this->get('session')->getFlashBag()->set('contact-notice', 'Your contact enquiry was successfully sent. Thank you!');
+      }
+      
+      return $this->render('GuitarFeelingBundle:Homepage:contact.html.twig');
    }
    
    private function getMostRecentTutorials($tutorialCount)

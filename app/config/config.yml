@@ -71,8 +71,10 @@ fos_user:
 swiftmailer:
    transport: "%mailer_transport%"
    host:      "%mailer_host%"
+   port:      "%mailer_port%"
    username:  "%mailer_user%"
    password:  "%mailer_password%"
+   encryption: "%mailer_encryption%"
    spool:     { type: memory }
    
 ivory_ck_editor:

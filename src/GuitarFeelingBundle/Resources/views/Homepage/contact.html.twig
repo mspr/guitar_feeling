@@ -1,0 +1,17 @@
+{% extends 'GuitarFeelingBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+   <form action="{{path('guitar_feeling_contact')}}" method="post">
+      <input type="text" name="contactname" />
+      <input type="text" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="body"></textarea>
+      <input type="submit" value="Submit" name="submit" />
+   </form>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

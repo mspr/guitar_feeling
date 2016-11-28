@@ -3,7 +3,6 @@
 <body>
    <nav class="navbar navbar-default navbar-inverse" role="navigation">
       <div class="container-fluid">
-      
          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
@@ -17,6 +16,9 @@
             </ul>
             <ul class="nav navbar-nav">
                <li><a href="{{ path('guitar_feeling_concerts') }}">Concerts</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+               <li><a href="{{ path('guitar_feeling_contact') }}">Contact</a></li>
             </ul>
             
             {{ render(controller('FOSUserBundle:Security:login')) }}
